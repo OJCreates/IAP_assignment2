@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/starter_code.props" />
+</Project>

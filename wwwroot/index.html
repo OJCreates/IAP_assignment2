@@ -1,0 +1,427 @@
+<html>
+<head>
+<!-- Imports Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<style>
+
+/* Global page styling */
+body {
+  background-color: gainsboro;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.event-btn,
+.hero-btn {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive navigation (Tablet+) */
+@media (min-width: 600px) {
+
+/* Show navigation links in a row on larger screens */
+  #nav-links {
+    display: flex !important;
+    gap: 20px;
+  }
+/* Hide hamburger icon on larger screens */
+  .topnav a.icon {
+    display: none !important;
+  }
+/* Display nav links horizontal instead of stacked */
+  #nav-links a {
+    display: inline-block;
+  }
+/* Aligns navigation items */
+  .topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Large screen layout */
+@media (min-width: 1000px) {
+  #nav-links {
+    gap: 30px;
+  }
+/* Larger logo on wide screens */
+  .logo img {
+    height: 50px;
+  }
+}
+
+/* Navigation bar styling */
+
+.topnav {
+  display: flex;
+  overflow: hidden;
+  background-color: #333;
+  position: relative;   /* Required for hamburger positioning */
+}
+/* Hide navigation menu by default on mobile */
+.topnav #nav-links {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+/* Hamburger menu icon styling */
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* Hover effects for navigation links */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/* Logo styling */
+.logo img {
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+}
+ /* Hero section styling */   
+.hero {
+    position: relative;
+    height: 50vh;
+    background-color: gainsboro;
+    background-image: url('https://images.pexels.com/photos/3321796/pexels-photo-3321796.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    /* Center content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Dark overlay effect for better text visibility */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.15);
+    backdrop-filter: blur(0.5px);
+}
+
+/* Text content within hero section */
+.hero-content {
+    position: relative;
+    max-width: 700px;
+    color: red;
+}
+
+.hero-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 20px
+}
+/*Call-to-action button styling */
+.hero-btn {
+    display: inline-block;
+    background-color: #191b1a;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #202221;
+    transform: scale(1.03);
+}
+
+/* Larger hero text on tablets */
+@media (min-width: 768px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    .hero-content p {
+        font-size: 1.3rem;
+    }
+    .hero-btn {
+        font-size: 1.2rem;
+        padding: 14px 28px;
+    }
+}
+/* About Us section styling */
+.about {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.about-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.about-text p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #333;
+}
+
+ /* Side-by-side layout on larger screens */
+@media (min-width: 768px) {
+    .about {
+        flex-direction: row;
+        justify-content: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+
+.about-text {
+    flex: 1;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.about-image {
+    flex: 1;
+}
+
+}
+/* Featured Events section styling */
+.featured-events {
+    padding: 40px 20px;
+}
+
+.featured-events h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.event-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.event-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.event-card h3 {
+    margin-top: 15px;
+    font-size: 1.3rem;
+}
+
+.event-card p {
+    color: #555;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.event-btn {
+    display: inline-block;
+    background-color: #191b1a;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.event-btn:hover {
+    background-color: #202221;
+    transform: scale(1.03);
+}
+
+
+@media (min-width: 768px) {
+    .event-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .event-card {
+        text-align: left;
+    }
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    .site-footer {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+
+<div class="topnav">
+    <!--Logo-->
+  <a href="index.html" class="logo">
+    <img src="images/company_logo.png" alt="Site Logo">
+    </a>
+    <!--Navigation links-->
+  <div id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+  </div>
+  <!--Mobile hamburger menu-->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+
+</div>
+<!-- JavaScript for mobile navigation toggle -->
+<script>
+function myFunction() {
+  var x = document.getElementById("nav-links");
+  //Toggle menu open/close
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>DISCOVER EVENTS ACROSS THE UK</h1>
+        <p>Find conferences, workshops, and talks happening near you.</p>
+        <a href="events.html" class="hero-btn">Browse Events</a>
+    </div>
+</section>
+<!--About us section-->
+<section class="about">
+    <div class="about-image">
+        <img src="images/crowd-participation.jpg" alt="crowd">
+    </div>
+
+    <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+            Our platform helps you discover events happening across the UK, 
+            from conferences and workshops, to business networking events and student activities.
+            Whether you're looking for to learn something new, grow your career, or simply attend something exciting, we make it easy to find everything happening near you.
+
+        </p>
+    </div>
+</section>
+<!--Featured events section-->
+<section class="featured-events">
+    <h2>Featured Events</h2>
+
+    <div class="event-grid">
+
+        <div class="event-card">
+            <img src ="images/Tech_Expo.jpg" alt="Event 1">
+            <h3>IoT Tech Exposition 2025</h3>
+            <p>Wed, 17 Dec, 09:00 </p>
+            <p>London · Hammersmith</p>
+            <a href="events.html" class="event-btn">Learn More</a>
+        </div>
+
+
+        <div class="event-card">
+            <img src="images/Professionals_Networking.jpg" alt="Event 2">
+            <h3>AI, Digital, & Tech Professionals Networking Event</h3>
+            <p>Tue, 2 Dec, 19:00</p>
+            <p>Nottingham</p>
+            <a href="events.html" class="event-btn">Learn More</a>
+        </div>      
+    
+
+        <div class="event-card">
+            <img src="images/Women_Tech.jpg" alt="Event 3">
+            <h3>Women In Tech Meetup</h3>
+            <p>Sat, 3 Jan, 10:30</p>
+            <p>Sheffield</p>
+            <a href="events.html" class="event-btn">Learn More</a>
+        </div>
+
+    </div>
+
+</section>
+<!--Footer-->
+<footer class="site-footer">
+    <p>© 2025 Olusegun Taiwo - Internet Application Programming</p>
+</footer>
+
+</body>
+</html>

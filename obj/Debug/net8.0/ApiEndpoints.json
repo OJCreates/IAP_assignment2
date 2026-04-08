@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "api.ApiController",
+    "Method": "Index",
+    "RelativePath": "api/data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

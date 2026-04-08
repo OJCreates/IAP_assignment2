@@ -1,0 +1,49 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = starter_code
+build_property.RootNamespace = starter_code
+build_property.ProjectDir = C:\Users\otaiw\Downloads\starter_code\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\otaiw\Downloads\starter_code
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXFByaXZhY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/otaiw/Downloads/starter_code/Pages2/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMyXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-z9ajbz0tm8

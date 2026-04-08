@@ -1,0 +1,295 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+    body {
+    background-color: gainsboro;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @media (min-width: 600px) {
+
+  #nav-links {
+    display: flex !important;
+    gap: 20px;
+  }
+
+  .topnav a.icon {
+    display: none !important;
+  }
+
+  #nav-links a {
+    display: inline-block;
+  }
+
+  .topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1000px) {
+  #nav-links {
+    gap: 30px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+}
+
+
+
+.topnav {
+  display: flex;
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.topnav #nav-links {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.logo img {
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+}
+
+    @media (mind-width: 768px) {
+        .event-hero img {
+            height: 380px;
+        }
+
+        .event-details h1 {
+            font-size:2.2rem;
+        }
+
+        .event-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 20px;
+        }
+    }
+    
+
+    
+    .event-hero img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .event-details {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .event-details h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .event-meta p {
+        margin: 5px 0;
+        font-size: 1rem;
+        color: #444;
+    }
+
+    .event-description {
+        margin: 20px 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .event-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 25px;
+    }
+
+    .book-btn {
+        display: inline-block;
+        margin-top: 15px;
+        background-color: #191b1a;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 0.3s ease;  
+    }
+
+    .book-btn:hover {
+        background-color: #202221;
+        transform: scale(1.03);
+    }
+
+
+    .back-link {
+        display: inline-block;
+        margin-top: 15px;
+        background-color: #191b1a;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 0.3s ease;
+    }
+
+    .book-btn:hover {
+        background-color: #202221;
+        transform: scale(1.03);
+    }
+
+    .back-link:hover {
+        background-color: #202221;
+    transform: scale(1.03);
+    }
+
+    .what-to-expect {
+        margin-top: 30px;
+    }
+
+    .what.to.expect h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .what-to-expect ul {
+        padding-left: 20px;
+    }
+
+    .what-to-expect li {
+        margin-bottom: 8px;
+        color: #444;
+        line-height: 1.5;
+    }
+
+    .site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    .site-footer {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}
+</style>
+
+
+<body>
+
+<div class="mobile-container">
+
+<div class="topnav">
+  <a href="index.html" class="logo">
+    <img src="images/company_logo.png" alt="Site Logo">
+    </a>
+  <div id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("nav-links");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+<section class="event-hero">
+    <img src="images/Women_Tech.jpg" alt="Event 3">
+</section>
+
+<section class="event-details">
+
+    <h1>Women In Tech Meetup</h1>
+
+    <div class="event-meta">
+        <p><strong>Date:</strong> 3 January 2026</p>
+        <p><strong>Time:</strong> 10:30 AM - 12:00 PM</p>
+        <p><strong>Location:</strong> Sheffield - Tamper Coffee</p>
+        <p><strong>Price:</strong>Free</p>
+        <p><strong>Category:</strong> Science & Tech</p>
+    </div>
+
+    <p class="event-description">
+       A welcoming meetup designed to connect, inspire, and empower women across all areas of technology
+    </p>
+
+    <div class="what-to-expect">
+        <h2>What to Expect</h2>
+        <ul>
+            <li>Network with women across various tech roles, industries, and experience levels</li>
+            <li>Hear real-world experiences, challenges, and successes from women in tech</li>
+            <li>Share advice, mentorship oppurtunities, and professional development resources</li>
+            <li>Build meaningful relationships in a supportive and empowering environment</li>   
+        </ul>
+    </div>
+    <div class="event-actions">
+
+    <a href="booking3.html" class="book-btn">Book Now</a>
+    <a href="events.html" class="back-link"> Back to Events</a>
+    </div>
+</section>
+<footer class="site-footer">
+    <p>© 2025 Olusegun Taiwo - Internet Application Programming</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+.admin-header {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    padding: 30px 20px;
+}
+
+.admin-events, .admin-add-event {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+#events-container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.event-row {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.event-row:last-child {
+    border-bottom: none;
+}
+
+.admin-add-event form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-add-event input,
+.admin-add-event textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.admin-add-event button {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #191b1a;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.admin-add-event button:hover {
+    background-color: #202221;
+    transform: scale(1.03);
+}
