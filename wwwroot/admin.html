@@ -233,6 +233,32 @@ function myFunction() {
     <p>Manage your events below.</p>
 </section>
 
+<section id="login-section" class="admin-add-event">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+        <label>Username</label>
+        <input type="text" id="login-username" required>
+
+        <label>Password</label>
+        <input type="password" id="login-password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</section>
+
+<div id="admin-dashboard" style="display: none;">
+    
+    <div style="text-align: center; margin-bottom: 20px;">
+        <button onclick="logout()" style="background-color: #ff4c4c; color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">Logout</button>
+    </div>
+
+<section class="admin-events">
+    <h2>Admin Inbox (Messages)</h2>
+    <div id="messages-container">
+        <p>Loading messages...</p>
+    </div>
+</section>
+
 <section class="admin-events">
     <h2>Current Events</h2>
     <div id="events-container">
@@ -254,6 +280,9 @@ function myFunction() {
         <label>Date</label>
         <input type="date" id="date" required>
 
+        <label></label>Location:</label>
+        <input type="text" id="location" placeholder="e.g. London, Manchester... " required>
+
         <label>Capacity</label>
         <input type="number" id="capacity" required>
 
@@ -261,6 +290,7 @@ function myFunction() {
     </form>
 </section>
 
+</div>
 
 <script src="/admin.js"></script>
 

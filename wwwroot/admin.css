@@ -56,3 +56,10 @@
     background-color: #202221;
     transform: scale(1.03);
 }
+
+#messages-container .event-row p {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #191b1a;
+}

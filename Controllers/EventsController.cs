@@ -31,26 +31,35 @@ namespace starter_code.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Event>>> GetEvents([FromQuery] string? title, [FromQuery] string? location)
-        {
-            var query = _context.Events
-                .Include(e => e.Organizer)
-                .Include(e => e.Comments)
-                .AsQueryable();
-     
-            if (!string.IsNullOrWhiteSpace(title))
-            {
-                query = query.Where(e => e.Title.Contains(title));
-            }
+public async Task<ActionResult<IEnumerable<Event>>> GetEvents([FromQuery] string? title, [FromQuery] string? location, [FromQuery] string? search)
+{
+    var query = _context.Events
+        .Include(e => e.Organizer)
+        .Include(e => e.Comments)
+        .AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(location))
-            {
-                query = query.Where(e => e.Location != null && e.Location.Contains(location));
-            }
+    if (!string.IsNullOrWhiteSpace(search))
+    {
+        var s = search.ToLower();
+        query = query.Where(e => 
+            (e.Title != null && e.Title.ToLower().Contains(s)) || 
+            (e.Location != null && e.Location.ToLower().Contains(s))
+        );
+    }
 
-            var events = await query.ToListAsync();
-            return Ok(events);
-        }
+    if (!string.IsNullOrWhiteSpace(title))
+    {
+        query = query.Where(e => e.Title.ToLower().Contains(title.ToLower()));
+    }
+
+    if (!string.IsNullOrWhiteSpace(location))
+    {
+        query = query.Where(e => e.Location != null && e.Location.ToLower().Contains(location.ToLower()));
+    }
+
+    var events = await query.ToListAsync();
+    return Ok(events);
+}
 
         [Authorize(Roles = "admin")]
         [HttpPost]

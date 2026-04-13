@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: gainsboro;
+    font-family: 'Lato', sans-serif;
+}
+
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+    padding: 10px 0;
+}
+
+#nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+#nav-links a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#nav-links a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.admin-header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.admin-events {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+#bookings-container {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.event-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.event-row:last-child {
+    border-bottom: none;
+}
+
+.cancel-btn {
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #e04343;
+    transform: scale(1.05);
+}
+
+.go-events-btn {
+    display: inline-block;
+    background-color: #191b1a;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}

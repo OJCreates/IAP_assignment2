@@ -181,6 +181,7 @@
     <a href="events.html">Events</a>
     <a href="contact.html">Contact</a>
     <a href="admin.html">Admin</a>
+    <a href="profile.html">My Tickets</a>
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -216,27 +217,28 @@ function myFunction() {
 </section>
 
 <section class="contact-form-section">
-    <form class="contact-form">
+    <form id="contactForm" class="contact-form">
 
         <label for="name">Name</label>
-        <input ype="text" id="name" placeholder="your name" required>
+        <input type="text" id="name" placeholder="your name" required>
 
         <label for="email">Email</label>
-        <input ype="email" id="email" placeholder="your email" required>
+        <input type="email" id="email" placeholder="your email" required>
 
         <label for="message">Message</label>
         <textarea id="message" rows="5" placeholder="your message" required></textarea>
 
-        <a href="contact-confirmed.html" class="contact-btn"> Send Message</a>
+        <button type="submit" class="contact-btn" style="border:none; cursor:pointer;">Send Message</button>
     </form>
 </section>
 
 <section class="contact-info">
     <h2>Contact Details</h2>
     <p><strong>Email:</strong> info@eventsphere.com</p>
-    <p><strong>Location:</strong>Nottingham, UK</p>
-
+    <p><strong>Location:</strong> Nottingham, UK</p>
 </section>
+
+<script src="/contact.js"></script>
 
 <footer class="site-footer">
     <p>© 2025 Olusegun Taiwo - Internet Application Programming</p>

@@ -171,6 +171,23 @@ body {
         padding: 20px;
     }
 }
+
+/* #login-section, #register-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-width: 400px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#login-section form, #register-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+} */
 </style>
 </head>
 <body>
@@ -186,6 +203,7 @@ body {
     <a href="events.html">Events</a>
     <a href="contact.html">Contact</a>
     <a href="admin.html">Admin</a>
+    <a href="profile.html">My Tickets</a>
   </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -212,32 +230,61 @@ function myFunction() {
     <p>Browse upcoming events across the UK.</p>
 </section>
 
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1000px; margin: 0 auto;">
+
+    <section id="register-section" style="flex: 1; min-width: 300px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+        <h3 style="margin-top: 0; margin-bottom: 20px;">Create Account</h3>
+        <form id="registerForm" style="display: flex; flex-direction: column; gap: 15px;">
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label style="margin-bottom: 5px; font-weight: bold;">Username</label>
+                <input type="text" id="reg-username" required minlength="3" maxlength="20" 
+               placeholder="At least 3 characters"
+               style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; text-align: left;">
+                <label style="margin-bottom: 5px; font-weight: bold;">Password</label>
+                <input type="password" id="reg-password" required minlength="5" maxlength="100" 
+               placeholder="At least 5 characters"
+               style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+            <button type="submit" style="padding: 12px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">Register</button>
+        </form>
+    </section>
+
+    <section id="login-section" style="flex: 1; min-width: 300px; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+        <div id="user-login-form">
+            <h3 style="margin-top: 0; margin-bottom: 20px;">User Login</h3>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <label style="margin-bottom: 5px; font-weight: bold;">Username</label>
+                    <input type="text" id="username" required placeholder="Username" 
+                   style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                </div>
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <label style="margin-bottom: 5px; font-weight: bold;">Password</label>
+                    <input type="password" id="password" required placeholder="Password" 
+                   style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                </div>
+                <button onclick="userLogin()" style="padding: 12px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">Login</button>
+            </div>
+        </div>
+        
+        <div id="user-logout-div" style="display: none;">
+            <h3>Welcome Back!</h3>
+            <button onclick="userLogout()" style="padding: 10px 20px; background: #ff4c4c; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Logout</button>
+        </div>
+    </section>
+
+</div>
+
+<section style="max-width: 600px; margin: 20px auto; text-align: center;">
+    <input type="text" id="searchInput" placeholder="Search by title or location..." style="padding: 10px; width: 70%; border-radius: 5px; border: 1px solid #ccc;">
+    <button onclick="searchEvents()" style="padding: 10px 20px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Search</button>
+</section>
+
 <section class="events-list">
-  <div class="event-grid">
-
-    <div class="event-card">
-      <img src="images/Tech_Expo.jpg" alt="Event 1">
-      <h3>IoT Tech Exposition 2025</h3>
-      <p>Wed, 17 Dec, 09:00 </p>
-      <p>London · </p>
-      <a href="event-detail1.html" class="event-btn">View Details</a>
-    </div>
-
-    <div class="event-card">
-            <img src="images/Professionals_Networking.jpg" alt="Event 2">
-            <h3>AI, Digital, & Tech Professionals Networking Event</h3>
-            <p>Tue, 9 Dec, 19:00</p>
-            <p>Nottingham</p>
-            <a href="event-detail2.html" class="event-btn">View Details</a>
-        </div>
-
-        <div class="event-card">
-            <img src="images/Women_Tech.jpg" alt="Event 3">
-            <h3>Women In Tech Meetup</h3>
-            <p>Sat, 3 Jan, 10:30</p>
-            <p>Sheffield</p>
-            <a href="events.html" class="event-btn">View Details</a>
-        </div>
+  <div class="event-grid" id="public-events-container">
 
   </div>
 </section>
@@ -246,6 +293,8 @@ function myFunction() {
     <p>© 2025 Olusegun Taiwo - Internet Application Programming</p>
 </footer>
 
+<script src="/events.js">
+</script>
 
 </body>
 </html>

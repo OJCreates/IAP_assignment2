@@ -16,21 +16,27 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="modules/api/*.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)"/>
-        <None Include="modules/api/*.json" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)"/>
-        <None Include="modules/api/runtimes/**" CopyToOutputDirectory="PreserveNewest" Visible="false" LinkBase="runtimes"/>
-        <None Include="modules/mk_5202_i/*.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)"/>
-        <None Include="modules/mk_5202_i/*.json" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)"/>
+        <None Include="modules/api/*.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)" />
+        <None Include="modules/api/*.json" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)" />
+        <None Include="modules/api/runtimes/**" CopyToOutputDirectory="PreserveNewest" Visible="false" LinkBase="runtimes" />
+        <None Include="modules/mk_5202_i/*.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)" />
+        <None Include="modules/mk_5202_i/*.json" CopyToOutputDirectory="PreserveNewest" Visible="false" Link="%(Filename)%(Extension)" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.1.66"/>
-        <PackageReference Include="Dapper-QueryBuilder" Version="2.0.0"/>
-        <PackageReference Include="Dapper.Contrib" Version="2.0.78"/>
-        <PackageReference Include="Dapper.Fluent" Version="2.0.0"/>
-        <PackageReference Include="Dapper.FluentMap" Version="2.0.0"/>
-        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.9"/>
-        <PackageReference Include="Microsoft.OpenApi" Version="1.6.17"/>
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="Dapper-QueryBuilder" Version="2.0.0" />
+        <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+        <PackageReference Include="Dapper.Fluent" Version="2.0.0" />
+        <PackageReference Include="Dapper.FluentMap" Version="2.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.2" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.*">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.*" />
+        <PackageReference Include="Microsoft.OpenApi" Version="1.6.17" />
     </ItemGroup>
 
 </Project>

@@ -1,112 +1,219 @@
-
-//Base URL for the API
 const API_BASE = "http://localhost:5201";
-//Will store the authentication token after login
-let TOKEN = null;
 
-//login function to authenticate as admin
-async function login() {
-    //send a POST request to the login endpoint
-    const res = await fetch(`${API_BASE}/api/auth?action=login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-    },
-        // Send username and password in the request body
-        body: JSON.stringify({
-            username: "admin",
-            password: "admin"
-    })    
-});
-    //If the request fails, throw an error
-if (!res.ok) {
-    throw new Error("Login failed");
-}  
+function checkAuth() {
+    const token = localStorage.getItem("ayvent_token");
+    const role = localStorage.getItem("ayvent_role");
 
-// Convert response to JSON and store the token
-const data = await res.json();
-TOKEN = data.token;
-console.log("Logged in, token:", TOKEN);
+    if (token && role === "admin") {
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("admin-dashboard").style.display = "block";
+        loadEvents(); 
+        loadMessages();
+    }
+
+    else if (token && role === "user") {
+        alert("Access Denied: Regular users are not allowed on the Admin Dashboard.");
+        logout();
+    }
+
+    else {
+        document.getElementById("login-section").style.display = "block";
+        document.getElementById("admin-dashboard").style.display = "none";
+    }
 }
-//Load events function to fetch and display events
-async function loadEvents() {
-    //send a GET request to the events endpoint with the authorization header
-    const res = await fetch(`${API_BASE}/api/events`, {
-        headers: {
-            "Authorization": `Bearer ${TOKEN}` //Uses stored token for authentication
+
+function logout() {
+    localStorage.removeItem("ayvent_token");
+    localStorage.removeItem("ayvent_role");
+    checkAuth();
+}
+
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById("login-username").value;
+        const password = document.getElementById("login-password").value;
+
+        try {
+            const res = await fetch(`${API_BASE}/api/v2/auth/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!res.ok) {
+                alert("Invalid username or password!");
+                return;
+            }
+
+            const data = await res.json();
+            
+            localStorage.setItem("ayvent_token", data.token);
+            localStorage.setItem("ayvent_role", data.role);
+            
+            loginForm.reset();
+            checkAuth();
+            
+        } catch (err) {
+            console.error("Login Error:", err);
+            alert("Could not connect to the server.");
         }
     });
-    // If request fails, throw an error
-    if (!res.ok) {
-        throw new Error("Failed to fetch events");
-    }
-// Convert the respponse to JSON
+}
+
+
+
+async function loadEvents() {
+    const res = await fetch(`${API_BASE}/api/v2/events`);
+    if (!res.ok) throw new Error("Failed to fetch events");
     const events = await res.json();
-    //Display the events on the page
     displayEvents(events);
 }
-//display events function to render events in the admin interface
+
 function displayEvents(events) {
-    //Get the container element for events
     const container = document.getElementById("events-container");
-    //clear existing event content
+    if (!container) return;
+
     container.innerHTML ="";
-    //Iterate through each event
+    
     events.forEach(event => {
-        //Create a new div element for each event
         const div = document.createElement("div");
         div.classList.add("event-row");
-        //insert event details into the div
+        
         div.innerHTML = `
             <strong>${event.title}</strong><br>
-            Date: ${event.date}<br>
-            Capacity: ${event.capacity}<br>
-            Remaining seats: ${event.remainingSeats ?? "N/A"}<br>
+            Date: ${new Date(event.date).toLocaleDateString()}<br>
+            Location: ${event.location || "No location set"}<br>
+            <button onclick="deleteEvent(${event.id})" style="margin-top: 10px; background-color:#ff4c4c; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Delete Event</button>
         `;
-        //Add the event div to the container
         container.appendChild(div);
     });   
 }
-//Add event form submission handler
-document.getElementById("addEventForm").addEventListener("submit", async (e) => {
-    //Stops page from reloading on form submission
-    e.preventDefault();
-// Gathers input values from the form
-    const newEvent = {
-        title: document.getElementById("title").value,
-        description: document.getElementById("description").value,
-        date: document.getElementById("date").value,
-        capacity: parseInt(document.getElementById("capacity").value)
-    };
-// Send POST request to add the new event
-    const res = await fetch(`${API_BASE}/api/events`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${TOKEN}` //admin authentication
-        },
-        body: JSON.stringify(newEvent)
-    });
-    //If request fails, throw an error
-    if (!res.ok) {
-        throw new Error("Failed to add event");
-    }
-    //Notify user of success, reload events, and reset the form
-    alert("Event added!");
-    loadEvents();
-    //Reset form fields
-    e.target.reset();
-});
-//Page load initialization
-document.addEventListener("DOMContentLoaded", async () => {
+
+async function deleteEvent(eventId) {
+    if (!confirm("Are you sure you want to delete this event?")) return; 
+
+    const token = localStorage.getItem("ayvent_token");
+
     try {
-        //Log in first to get the token
-        await login();
-        //Then load the events
-        loadEvents();
+        const res = await fetch(`${API_BASE}/api/v2/events/${eventId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (res.ok) {
+            alert("Event deleted successfully!");
+            loadEvents();
+        } else {
+            alert("Failed to delete the event. Are you logged in as an Admin?");
+        }
     } catch (err) {
-        //If any error occurs, log it and alert the user
-        console.error("Admin error:", err);
-        alert("Admin login failed. Check API.");
+        console.error("Error deleting event:", err);
     }
+}
+
+const addForm = document.getElementById("addEventForm");
+if (addForm) {
+    addForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const token = localStorage.getItem("ayvent_token");
+       
+        const newEvent = {
+            title: document.getElementById("title").value,
+            description: document.getElementById("description").value,
+            date: document.getElementById("date").value,
+            capacity: parseInt(document.getElementById("capacity").value), 
+            location: document.getElementById("location").value,
+            organizerId: 1
+        };
+
+        const res = await fetch(`${API_BASE}/api/v2/events`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(newEvent)
+        });
+
+        if (!res.ok) {
+            alert("Failed to add event. Are you logged in as an Admin?");
+            return;
+        }
+
+        alert("Event added successfully!");
+        loadEvents();
+        e.target.reset();
+    });
+}
+
+    
+async function loadMessages() {
+    const token = localStorage.getItem("ayvent_token");
+    const container = document.getElementById("messages-container");
+
+    try {
+        const res = await fetch(`${API_BASE}/api/v2/messages`, {
+            headers: { "Authorization": `Bearer ${token}` }
+        });
+        const messages = await res.json();
+        container.innerHTML = "";
+
+        messages.forEach(msg => {
+            const div = document.createElement("div");
+            div.classList.add("event-row");
+
+            const messageBody = msg.content || msg.message || "No message content found";
+
+            div.innerHTML = `
+        <div style="flex-grow: 1;">
+            <strong>From: ${msg.name || msg.Name || "Unknown Sender"}</strong> (${msg.email || msg.Email || "No email provided"})<br>
+            <p>${msg.content || msg.message}</p>
+        </div>
+        <button onclick="deleteMessage(${msg.id})" style="margin-left: 20px; background-color: #ff4c4c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Delete</button>
+    `;
+            container.appendChild(div);
+        });
+    } catch (err) {
+        container.innerHTML = "<p>Error loading messages.</p>";
+    }
+}
+
+
+async function deleteMessage(messageId) {
+    if (!confirm("Are you sure you want to delete this message?")) return;
+
+    const token = localStorage.getItem("ayvent_token");
+
+    try {
+        const res = await fetch(`${API_BASE}/api/v2/messages/${messageId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (res.ok) {
+            alert("Message deleted!");
+            loadMessages();
+        } else {
+            const errorText = await res.text();
+            console.error("Failed to delete message:", errorText);
+            alert("Failed to delete message.");
+        }
+    } catch (err) {
+        console.error("Error deleting message:", err);
+        alert("Server error.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    checkAuth(); 
+
+
 });
